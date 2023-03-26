@@ -8,7 +8,7 @@ import { addFavNpmPackageForm, getSingleFavNpmPackage, searchFavNpmPackage, upda
 import { errorCodes } from '../../constants';
 import { fieldValidation } from '../../utils/FormValidation';
 
-import { Grid, IconButton, TextField } from '@mui/material';
+import { Grid, IconButton, TextField, Tooltip } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import NoResult from '../../shared_ui_components/NoResult';
 import Shimmer from '../../shared_ui_components/Shimmer';
@@ -199,9 +199,12 @@ const AddUpdateFavNpmpackageForm = () => {
     <>
       <div className={styles.formDetail}>
         <div className={styles.formHeaderTextWrapper}>
-          <IconButton className={styles.arrowIcon} onClick={() => navigate(-1)}>
-            <ArrowBackIcon />
-          </IconButton>
+          <Tooltip title='Back' arrow>
+            <IconButton className={styles.arrowIcon} onClick={() => navigate(-1)}>
+              <ArrowBackIcon />
+            </IconButton>
+          </Tooltip>
+
           <p className={styles.formHeaderText + ' heading3'}>{id ? 'Edit' : 'Add'} Your Favourite Npm Package</p>
         </div>
         <form onSubmit={handleSubmitForm}>

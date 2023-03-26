@@ -1,4 +1,4 @@
-import { Container, IconButton } from '@mui/material';
+import { Container, IconButton, Tooltip } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useState, useEffect, Fragment } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
@@ -34,9 +34,12 @@ const NpmPackageDetailPage = () => {
       {npmPackageDetails ? (
         <div className={styles.packageDetailWrapper}>
           <div className={styles.IconWrapper}>
-            <IconButton className={styles.arrowIcon} onClick={() => navigate(-1)}>
-              <ArrowBackIcon />
-            </IconButton>
+            <Tooltip title='Back' arrow>
+              <IconButton className={styles.arrowIcon} onClick={() => navigate(-1)}>
+                <ArrowBackIcon />
+              </IconButton>
+            </Tooltip>
+
             <p className=' heading2'>Npm Packge Details</p>
           </div>
           <p className=' heading3'>{npmPackageDetails.selectedPackageName}</p>
