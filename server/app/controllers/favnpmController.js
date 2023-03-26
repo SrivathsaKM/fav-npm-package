@@ -4,9 +4,7 @@ const favNpmController = {};
 
 favNpmController.getSearchList = (req, res) => {
   const searchQuery = req.params.name;
-  const size = req.params?.size;
-  const from = req.params?.from;
-  let _url = `https://api.npms.io/v2/search?q=${searchQuery}&size=${size ?? 50}&from=${from ?? 0}`;
+  let _url = `https://api.npms.io/v2/search?q=${searchQuery}&size=${50}&from=${0}`;
   axios
     .get(_url)
     .then((response) => {
