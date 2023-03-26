@@ -34,8 +34,8 @@ const NpmPackageDetailPage = () => {
       {npmPackageDetails ? (
         <div className={styles.packageDetailWrapper}>
           <div className={styles.IconWrapper}>
-            <IconButton className={styles.arrowIcon}>
-              <ArrowBackIcon onClick={() => navigate(-1)} />
+            <IconButton className={styles.arrowIcon} onClick={() => navigate(-1)}>
+              <ArrowBackIcon />
             </IconButton>
             <p className=' heading2'>Npm Packge Details</p>
           </div>

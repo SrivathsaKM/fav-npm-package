@@ -15,11 +15,17 @@ import FavNpmPackageTableListItems from './FavNpmPackageTableListItems';
 import NoResult from '../../shared_ui_components/NoResult';
 import CustomButton from '../../shared_ui_components/CustomButton';
 import Shimmer from '../../shared_ui_components/Shimmer';
+import ToastMessage from '../../shared_ui_components/ToastMessage';
 
 const FavNpmPackageTable = () => {
   const navigate = useNavigate();
   const [npmLists, setNpmlists] = useState([]);
   const [loader, setLoader] = useState(true);
+  const [openToastMessage, setOpenToastMessage] = useState(false);
+  const [toastMessage, setToastMessage] = useState({
+    severity: '',
+    message: '',
+  });
 
   useEffect(() => {
     getAllFavNpmPackage()
@@ -42,6 +48,17 @@ const FavNpmPackageTable = () => {
           if (response.status === 200) {
             const updatedLists = npmLists.filter((item) => item._id !== id);
             setNpmlists(updatedLists);
+            setOpenToastMessage(true);
+            setToastMessage({
+              severity: 'success',
+              message: response.message,
+            });
+          } else {
+            setOpenToastMessage(true);
+            setToastMessage({
+              severity: 'error',
+              message: response.message,
+            });
           }
         })
         .catch((err) => {
@@ -49,6 +66,18 @@ const FavNpmPackageTable = () => {
         });
     }
   };
+
+  useEffect(() => {
+    if (openToastMessage) {
+      setTimeout(() => {
+        setToastMessage({
+          severity: '',
+          message: '',
+        });
+        setOpenToastMessage(false);
+      }, 5000);
+    }
+  }, [openToastMessage]);
 
   return (
     <>
@@ -85,6 +114,7 @@ const FavNpmPackageTable = () => {
           </TableContainer>
         </div>
       )}
+      {openToastMessage && <ToastMessage toastMessage={toastMessage} open={openToastMessage} handleClose={() => setOpenToastMessage(false)} />}
     </>
   );
 };

@@ -1,5 +1,6 @@
 import React, { Component, ErrorInfo, ReactNode } from 'react';
 import { Link } from 'react-router-dom';
+import ErrorState from '../assets/images/404_error.svg';
 
 class ErrorBoundary extends Component {
   // navigate = useNavigate();
@@ -29,7 +30,7 @@ class ErrorBoundary extends Component {
             alignItems: 'center',
           }}>
           <div style={{ textAlign: 'center' }}>
-            <img src={''} alt='page_not_found' />
+            <img src={ErrorState} alt='page_not_found' />
             <p style={{ padding: '12px 0' }} className='heading4'>
               Error 404 - Something went wrong.
             </p>

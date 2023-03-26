@@ -12,6 +12,7 @@ import { Grid, IconButton, TextField } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import NoResult from '../../shared_ui_components/NoResult';
 import Shimmer from '../../shared_ui_components/Shimmer';
+import ToastMessage from './../../shared_ui_components/ToastMessage';
 
 const AddUpdateFavNpmpackageForm = () => {
   const navigate = useNavigate();
@@ -28,6 +29,11 @@ const AddUpdateFavNpmpackageForm = () => {
   const [npmPackageOption, setNpmPackageOption] = useState([]);
   const [debounceValue, setDebounceValue] = useState('');
   const [loading, setLoading] = useState(true);
+  const [openToastMessage, setOpenToastMessage] = useState(false);
+  const [toastMessage, setToastMessage] = useState({
+    severity: '',
+    message: '',
+  });
 
   useEffect(() => {
     if (id) {
@@ -140,6 +146,12 @@ const AddUpdateFavNpmpackageForm = () => {
           .then((response) => {
             if (response.status === 200) {
               navigate('/fav-npm-packages');
+            } else {
+              setOpenToastMessage(true);
+              setToastMessage({
+                severity: 'error',
+                message: response.message,
+              });
             }
             setLoader(false);
           })
@@ -152,6 +164,12 @@ const AddUpdateFavNpmpackageForm = () => {
           .then((response) => {
             if (response.status === 200) {
               navigate('/fav-npm-packages');
+            } else {
+              setOpenToastMessage(true);
+              setToastMessage({
+                severity: 'error',
+                message: response.message,
+              });
             }
             setLoader(false);
           })
@@ -165,12 +183,24 @@ const AddUpdateFavNpmpackageForm = () => {
     }
   };
 
+  useEffect(() => {
+    if (openToastMessage) {
+      setTimeout(() => {
+        setToastMessage({
+          severity: '',
+          message: '',
+        });
+        setOpenToastMessage(false);
+      }, 5000);
+    }
+  }, [openToastMessage]);
+
   return (
     <>
       <div className={styles.formDetail}>
         <div className={styles.formHeaderTextWrapper}>
-          <IconButton className={styles.arrowIcon}>
-            <ArrowBackIcon onClick={() => navigate(-1)} />
+          <IconButton className={styles.arrowIcon} onClick={() => navigate(-1)}>
+            <ArrowBackIcon />
           </IconButton>
           <p className={styles.formHeaderText + ' heading3'}>{id ? 'Edit' : 'Add'} Your Favourite Npm Package</p>
         </div>
@@ -193,11 +223,11 @@ const AddUpdateFavNpmpackageForm = () => {
                     <div className={styles.dropdownResult + ' heading6'}>Results:</div>
                     <div className={styles.dropdownWrapper + ' paragraph'}>
                       {npmPackageOption.length ? (
-                        npmPackageOption.map((item, id) => {
+                        npmPackageOption.map((item, idx) => {
                           return (
-                            <>
-                              <CustomRadioButton value={item?.package.name} checked={formData.selectedPackageName === item?.package?.name} onChange={(e) => handleChange('selectedPackageName', e.target.value)} error={error.selectedPackageName} noMargin='noMargin' key={id} />
-                            </>
+                            <Fragment key={idx}>
+                              <CustomRadioButton value={item?.package.name} checked={formData.selectedPackageName === item?.package?.name} onChange={(e) => handleChange('selectedPackageName', e.target.value)} error={error.selectedPackageName} noMargin='noMargin' />
+                            </Fragment>
                           );
                         })
                       ) : (
@@ -221,6 +251,7 @@ const AddUpdateFavNpmpackageForm = () => {
           </div>
         </form>
       </div>
+      {openToastMessage && <ToastMessage toastMessage={toastMessage} open={openToastMessage} handleClose={() => setOpenToastMessage(false)} />}
     </>
   );
 };

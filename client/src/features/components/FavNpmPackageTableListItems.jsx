@@ -32,18 +32,18 @@ const FavNpmPackageTableListItems = ({ id, items, handleDeletePackage }) => {
           {items.description}
         </TableCell>
         <TableCell align='right' className={styles.tableActions}>
-          <IconButton className={styles.tableIcons}>
-            <DeleteIcon
-              onClick={() => {
-                setOpen(true);
-              }}
-            />
+          <IconButton
+            className={styles.tableIcons}
+            onClick={() => {
+              setOpen(true);
+            }}>
+            <DeleteIcon />
           </IconButton>
-          <IconButton className={styles.tableIcons}>
-            <EditIcon onClick={() => navigate(`/fav-npm-packages/edit/${id}`)} />
+          <IconButton className={styles.tableIcons} onClick={() => navigate(`/fav-npm-packages/edit/${id}`)}>
+            <EditIcon />
           </IconButton>
-          <IconButton className={styles.tableIcons}>
-            <VisibilityIcon onClick={() => navigate(`/fav-npm-packages/details/${id}`)} />
+          <IconButton className={styles.tableIcons} onClick={() => navigate(`/fav-npm-packages/details/${id}`)}>
+            <VisibilityIcon />
           </IconButton>
         </TableCell>
       </TableRow>

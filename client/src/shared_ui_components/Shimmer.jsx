@@ -125,9 +125,9 @@ const Shimmer = ({ type }) => {
       {type === 'editList' && (
         <>
           <div className={styles.dropdownResult + ' heading6'}>Results:</div>
-          {[...Array(8)].map((item, key) => {
+          {[...Array(8)].map((_, idx) => {
             return (
-              <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginLeft: '16px' }}>
+              <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginLeft: '16px' }} key={idx}>
                 <Skeleton variant='circular' width='32px' height='32px' />
                 <Skeleton
                   variant='text'
