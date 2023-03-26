@@ -30,7 +30,7 @@ Note:
 
 # Packages used:
 
-> * Client: React, Material UI, React-router-dom, Axios
+> * Client: React, Material UI, React-router-dom, Axios, Sass
 > * Server: Express, cors, mongoose, Axios, dotenv
 
 # To Run on your Local:
