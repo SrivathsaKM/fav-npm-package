@@ -12,4 +12,5 @@
 
 # Deployment.
 
-> * Client side is hosted in netlify.[https://lambent-marshmallow-e87cbb.netlify.app/fav-npm-packageso](https://lambent-marshmallow-e87cbb.netlify.app/fav-npm-packages). 
+> * Client side is hosted to Netlify.[https://lambent-marshmallow-e87cbb.netlify.app/fav-npm-packageso](https://lambent-marshmallow-e87cbb.netlify.app/fav-npm-packages). 
+> * Server side is hosted to Render. [https://fav-npm-package-g91p.onrender.com/api/list](https://fav-npm-package-g91p.onrender.com/api/list)
