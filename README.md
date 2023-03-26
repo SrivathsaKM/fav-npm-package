@@ -21,12 +21,10 @@
 > * To add/bookmark -> /list/add
 > * To update bookmark -> /list/update/:id
 > * To delete bookmark -> /list/delete/:id
-> * To search npm package => /search-list/:name/:size/:from 
+> * To search npm package => /search-list/:name/
 
 Note: 
 > * name refer to the query with support for filters and other modifiers
-> * size refer to the offset in which to start searching from (max of 5000), default value 0
-> * from refer to the total number of results to return (max of 250), default value 25
 
 # Packages used:
 
