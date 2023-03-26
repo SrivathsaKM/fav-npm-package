@@ -1,6 +1,6 @@
 # Web application that allows users to bookmark their favourite npm package
 
-# Application is built using Vite (React Js) for client side, Node js & Exprees for Server side & MongoDb for database
+# Application is built using Vite (React JS) for client side, Node JS & Exprees JS for server side & MongoDB for database.
 
 # Feature:
 
