@@ -1,0 +1,118 @@
+//font-family
+$font_primary: 'Inter', sans-serif;
+$font_secondary: 'Source Code Pro', monospace;
+
+$lightFont: 300;
+$regularFont: 400;
+$mediumFont: 500;
+$semiBoldFont: 600;
+$boldFont: 700;
+
+//color
+
+$black: #000000;
+$white: #ffffff;
+$primary_blue: #3f74ec;
+$secondary_gray: #fbfbfc;
+$tertiary_gray: #f1f1f1;
+
+$blue1: #edf2fd;
+$blue2: #c8d7f9;
+$blue3: #a3bcf5;
+$blue4: #7ea1f1;
+$blue5: #5a86ed;
+$blue6: #1853dc;
+$blue7: #1445b8;
+$blue8: #103793;
+$blue9: #081c49;
+
+$gray1: #fafafa;
+$gray2: #e6e6e7;
+$gray3: #cccdd0;
+$gray4: #b3b5b8;
+$gray5: #9a9ca0;
+$gray6: #808388;
+$gray7: #676a71;
+$gray8: #4e5159;
+$gray9: #353941;
+$gray10: #020712;
+
+$support_white1: #c6cbd1;
+$support_white2: #dfe2e5;
+
+$support_red: #cf2116;
+$error_red: #d14352;
+$support_orange: #080808;
+$support_gold: #bb9f4a;
+$support_green: #2e9940;
+$support_blue: #4c89cd;
+$support_powder: #6f8da9;
+$support_bronze: #9c7d5e;
+$support_yellow: #f8cd46;
+
+$info_bg: #ecf6ff;
+$success_bg: #e9f5ed;
+$error_bg: #ffecee;
+$warning_bg: #ffefbb;
+$button_bg_blue: #d9e3fb;
+$gold_bg: #fff7d7;
+
+$red_2: #f8b5b9;
+$red_4: #523133;
+$black_1: #77777c;
+
+//font-size and line-height
+$font32: 32px;
+$font28: 28px;
+$font24: 24px;
+$font22: 22px;
+$font20: 20px;
+$font18: 18px;
+$font16: 16px;
+$font14: 14px;
+$font13: 13px;
+$font12: 12px;
+$font10: 10px;
+
+$lineHeight48: 48px;
+$lineHeight44: 44px;
+$lineHeight40: 40px;
+$lineHeight36: 36px;
+$lineHeight32: 32px;
+$lineHeight28: 28px;
+$lineHeight24: 24px;
+$lineHeight20: 20px;
+$lineHeight16: 16px;
+$lineHeight12: 12px;
+
+@mixin fontStyle($fontFamily: null, $size: null, $weight: null, $color: null, $lineHeight: null, $margin: null, $padding: null) {
+  @if $fontFamily != null {
+    font-family: $fontFamily;
+  }
+  @if $size != null {
+    font-size: $size;
+  }
+  @if $weight != null {
+    font-weight: $weight;
+  }
+  @if $color != null {
+    color: $color;
+  }
+  @if $lineHeight != null {
+    line-height: $lineHeight;
+  }
+  @if $margin != null {
+    margin: $margin;
+  }
+  @if $padding != null {
+    padding: $padding;
+  }
+}
+
+@mixin transitionForAll($time: 0.3s, $transProp: ease) {
+  -webkit-transition: all $time $transProp;
+  -moz-transition: all $time $transProp;
+  -o-transition: all $time $transProp;
+  transition: all $time $transProp;
+  transition: all $time $transProp;
+}

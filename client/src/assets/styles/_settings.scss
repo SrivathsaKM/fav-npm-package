@@ -1,0 +1,497 @@
+@import 'variable';
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  @include fontStyle($fontFamily: $font_primary, $size: $font14, $weight: $regularFont, $color: $gray9, $lineHeight: $lineHeight20);
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    text-decoration: none;
+    &:hover,
+    &:active,
+    &:focus,
+    &:visited {
+      text-decoration: none;
+      cursor: pointer;
+      outline: 0;
+    }
+  }
+
+  .disabled {
+    border: none;
+    pointer-events: none;
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  .headingTextOverflow {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 500px;
+    padding-bottom: 16px;
+  }
+
+  .paragraphOverflow {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-right: 12px;
+  }
+
+  .flexCentered {
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: wrap;
+    -webkit-flex-flow: wrap;
+    align-items: center;
+    &:before,
+    &:after {
+      width: 0;
+    }
+  }
+
+  .flexNotCentered {
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: wrap;
+    -webkit-flex-flow: wrap;
+    &:before,
+    &:after {
+      width: 0;
+    }
+  }
+
+  .backgroundProp {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .listUnStyled {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    float: none;
+  }
+
+  .listInline {
+    list-style: none;
+    .listInlineItem {
+      display: inline-block;
+      width: auto;
+      .MuiTouchRipple-root {
+        display: none;
+      }
+    }
+  }
+
+  .textCenter {
+    text-align: center;
+  }
+
+  .textRight {
+    text-align: right;
+  }
+
+  .heading1 {
+    @include fontStyle($fontFamily: $font_primary, $size: $font32, $weight: $semiBoldFont, $color: $gray10, $lineHeight: $lineHeight48);
+  }
+
+  .heading2 {
+    @include fontStyle($fontFamily: $font_primary, $size: $font28, $weight: $semiBoldFont, $color: $gray10, $lineHeight: $lineHeight44);
+  }
+
+  .heading3 {
+    @include fontStyle($fontFamily: $font_primary, $size: $font24, $weight: $semiBoldFont, $color: $gray10, $lineHeight: $lineHeight36);
+  }
+
+  .heading4 {
+    @include fontStyle($fontFamily: $font_primary, $size: $font20, $weight: $semiBoldFont, $color: $gray10, $lineHeight: $lineHeight32);
+  }
+
+  .heading5 {
+    @include fontStyle($fontFamily: $font_primary, $size: $font18, $weight: $semiBoldFont, $color: $gray10, $lineHeight: $lineHeight28);
+  }
+
+  .heading6 {
+    @include fontStyle($fontFamily: $font_primary, $size: $font16, $weight: $semiBoldFont, $color: $gray9, $lineHeight: $lineHeight24);
+  }
+
+  .paragraph {
+    @include fontStyle($fontFamily: $font_primary, $size: $font14, $weight: $regularFont, $color: $gray9, $lineHeight: $lineHeight24);
+  }
+
+  .paragraph_semiBold {
+    @include fontStyle($fontFamily: $font_primary, $size: $font14, $weight: $semiBoldFont, $color: $gray9, $lineHeight: $lineHeight24);
+  }
+
+  .supportText {
+    @include fontStyle($fontFamily: $font_primary, $size: $font13, $weight: $regularFont, $color: $gray9, $lineHeight: $lineHeight20);
+  }
+
+  .supportText14 {
+    @include fontStyle($fontFamily: $font_primary, $size: $font14, $weight: $regularFont, $color: $gray9, $lineHeight: $lineHeight20);
+  }
+
+  .supportText_semiBold {
+    @include fontStyle($fontFamily: $font_primary, $size: $font13, $weight: $semiBoldFont, $color: $gray9, $lineHeight: $lineHeight20);
+  }
+
+  .supportText_semiBold_grey {
+    @include fontStyle($fontFamily: $font_primary, $size: $font13, $weight: $semiBoldFont, $color: $gray7, $lineHeight: $lineHeight20);
+  }
+
+  .supportText_semiBold14 {
+    @include fontStyle($fontFamily: $font_primary, $size: $font14, $weight: $semiBoldFont, $color: $gray9, $lineHeight: $lineHeight20);
+  }
+
+  .supportText_semiBold_vul {
+    @include fontStyle($fontFamily: $font_primary, $size: $font13, $weight: $semiBoldFont, $color: $gray6, $lineHeight: $lineHeight20);
+  }
+
+  .labelText {
+    @include fontStyle($fontFamily: $font_primary, $size: $font13, $weight: $regularFont, $color: $gray9, $lineHeight: $lineHeight16);
+  }
+
+  .labelText_semiBold {
+    @include fontStyle($fontFamily: $font_primary, $size: $font13, $weight: $semiBoldFont, $color: $gray9, $lineHeight: $lineHeight16);
+  }
+
+  .primaryBtn {
+    @include fontStyle($fontFamily: $font_primary, $size: $font14, $weight: $semiBoldFont, $lineHeight: $lineHeight24, $color: $white);
+    background: $primary_blue;
+    @include transitionForAll($time: 0.4s, $transProp: ease-out);
+    padding: 6px 16px;
+    outline: none;
+    text-align: center;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    //text-transform: capitalize;
+    width: max-content;
+    &:hover,
+    &:focus,
+    &:active {
+      @include transitionForAll($time: 0.3s, $transProp: ease-in);
+      outline: none;
+      background: $blue6;
+      box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.16), 0px 2px 16px rgba(0, 0, 0, 0.24);
+    }
+    &.Mui-disabled {
+      background: $blue4;
+    }
+    &.disabledBtn {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+      // background: $gray3;
+      background: $primary_blue;
+    }
+    &.smallBtn {
+      padding: 4px 8px;
+      font-size: $font13;
+      line-height: $lineHeight16;
+    }
+    &.submitBtn {
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+
+  .secondaryBtn {
+    @include fontStyle($fontFamily: $font_primary, $size: $font14, $weight: $semiBoldFont, $lineHeight: $lineHeight24, $color: $white);
+    background: $support_red;
+    @include transitionForAll($time: 0.4s, $transProp: ease-out);
+    padding: 6px 16px;
+    outline: none;
+    text-align: center;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    text-transform: capitalize;
+    width: max-content;
+    &:hover,
+    &:focus,
+    &:active {
+      @include transitionForAll($time: 0.3s, $transProp: ease-in);
+      outline: none;
+      background: rgba($support_red, 1.1);
+      box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.16), 0px 2px 16px rgba(0, 0, 0, 0.24);
+    }
+    &.Mui-disabled {
+      background: rgba($support_red, 0.5);
+    }
+    &.disabledBtn {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+      background: rgba($support_red, 0.5);
+    }
+    &.smallBtn {
+      padding: 4px 8px;
+      font-size: $font13;
+      line-height: $lineHeight16;
+    }
+    &.submitBtn {
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+
+  .errorMsg {
+    position: relative;
+    @include fontStyle($fontFamily: $font_primary, $size: $font12, $weight: $regularFont, $color: $support_red, $lineHeight: $lineHeight20);
+    &.absolute {
+      position: absolute;
+    }
+  }
+
+  .inputGroup {
+    outline: none;
+    margin-bottom: 24px;
+    &.noMargin {
+      margin-bottom: 0px;
+    }
+
+    &.inlineBlock {
+      display: inline-block;
+      position: relative;
+      font-size: 24px;
+    }
+
+    // position: relative;
+
+    &.numberGroup {
+      position: relative;
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0px;
+        top: 11px;
+        height: 20px;
+        border-radius: 2px;
+        width: 2px;
+      }
+    }
+
+    &.searchGroup {
+      margin-bottom: 0;
+      .search {
+        position: relative;
+        input,
+        textarea,
+        select {
+          text-overflow: ellipsis;
+          background: $white;
+          padding: 6px 24px 6px 30px;
+          width: 270px;
+        }
+        .searchIcon {
+          position: absolute;
+          left: 8px;
+          top: 50%;
+          transform: translateY(-50%);
+          height: 14px;
+          cursor: pointer;
+        }
+      }
+    }
+
+    &.errorGroup {
+      input,
+      textarea,
+      select {
+        border: 1px solid $support_red;
+        background: $error_bg;
+      }
+    }
+    .disabledInputGroup {
+      cursor: not-allowed;
+      pointer-events: none;
+      input,
+      textarea,
+      select {
+        background: $gray2;
+      }
+    }
+    .commentInputGroup {
+      input {
+        border: none;
+        margin-bottom: 0;
+        height: 32px;
+        &:focus {
+          border: none;
+        }
+      }
+    }
+    &.selectGroup {
+      .inputGroup {
+        margin-bottom: 0;
+      }
+      &.errorGroup {
+        .reactSelect > div {
+          border: 1px solid $support_red;
+          // background: $lightRed;
+          &:focus {
+            background: transparent;
+          }
+        }
+      }
+    }
+    label {
+      @include fontStyle($fontFamily: $font_primary, $size: $font13, $weight: $semiBoldFont, $color: $gray9, $lineHeight: $lineHeight20);
+      min-width: 100%;
+      transform: none;
+      position: relative;
+      margin-bottom: 8px;
+      display: block;
+      .MuiFormLabel-asterisk {
+        color: inherit;
+      }
+    }
+    input,
+    select {
+      height: 36px;
+    }
+    .MuiFormControl-root {
+      margin: 0;
+      width: 100%;
+    }
+    input,
+    textarea,
+    select {
+      resize: none;
+      width: 100%;
+      @include fontStyle($fontFamily: $font_primary, $size: $font16, $weight: $regularFont, $color: $gray9, $lineHeight: $lineHeight20);
+      background: transparent;
+      border-radius: 4px;
+      border: 1px solid $gray3;
+      padding: 6px 16px;
+      box-sizing: border-box;
+      // &:hover,
+      &:active,
+      &:focus {
+        background: $blue1;
+        border: 1px solid $primary_blue;
+      }
+
+      &::-webkit-input-placeholder {
+        /* Chrome/Opera/Safari */
+        @include fontStyle($fontFamily: $font_primary, $size: $font16, $weight: $regularFont, $color: $gray4, $lineHeight: $lineHeight20);
+        opacity: 1;
+        vertical-align: middle;
+        text-transform: none;
+      }
+      &::-moz-placeholder {
+        /* Firefox 19+ */
+        @include fontStyle($fontFamily: $font_primary, $size: $font16, $weight: $regularFont, $color: $gray4, $lineHeight: $lineHeight20);
+        opacity: 1;
+        vertical-align: middle;
+        text-transform: none;
+      }
+      &:-ms-input-placeholder {
+        /* IE 10+ */
+        @include fontStyle($fontFamily: $font_primary, $size: $font16, $weight: $regularFont, $color: $gray4, $lineHeight: $lineHeight20);
+        opacity: 1;
+        vertical-align: middle;
+        text-transform: none;
+      }
+      &:-moz-placeholder {
+        /* Firefox 18- */
+        @include fontStyle($fontFamily: $font_primary, $size: $font16, $weight: $regularFont, $color: $gray4, $lineHeight: $lineHeight20);
+        opacity: 1;
+        vertical-align: middle;
+        text-transform: none;
+      }
+      .MuiTypography-body1 {
+        background: none;
+        padding-left: 0 !important;
+        font-size: $font16;
+      }
+      &.Mui-disabled {
+        border: 1px solid $gray3;
+        background: $gray2;
+        // opacity: 0.7;
+        pointer-events: none;
+        cursor: not-allowed;
+      }
+      &:active,
+      &:focus {
+        outline: none;
+      }
+    }
+    .MuiSelect-select {
+      background: transparent;
+      border-radius: 4px;
+      padding: 10px 16px;
+      padding: 0;
+      border: none;
+      background: $white;
+      @include fontStyle($fontFamily: $font_primary, $size: $font13, $weight: $regularFont, $color: $gray9, $lineHeight: $lineHeight20);
+    }
+    .MuiFormLabel-root.Mui-focused {
+      // color: $primaryRed;
+      color: rgba(0, 0, 0, 0.9);
+    }
+    label + .MuiInput-formControl {
+      margin-top: 0px;
+    }
+    .MuiOutlinedInput-notchedOutline {
+      display: none;
+    }
+    .MuiInput-underline.Mui-disabled:before {
+      border-bottom: none;
+    }
+    .MuiSelect-select.Mui-disabled {
+      background: $white;
+      opacity: 0.8;
+      cursor: text;
+      color: rgba(0, 0, 0, 0.6);
+    }
+
+    .MuiInput-underline:before {
+      border-bottom: none;
+    }
+    .MuiInput-underline:after {
+      border-bottom: none;
+    }
+    .MuiInputBase-multiline {
+      padding: 0;
+      height: 96px;
+      border-radius: 4px;
+      & > textarea {
+        height: 96px !important;
+        max-height: 96px;
+        overflow-y: scroll !important;
+      }
+    }
+    .MuiInput-underline:hover:not(.Mui-disabled):before {
+      border-bottom: none;
+    }
+
+    .selectFormControl {
+      .MuiSelect-icon {
+        right: 10px;
+      }
+    }
+    .MuiAutocomplete-inputRoot {
+      padding: 0px !important;
+      .MuiAutocomplete-input {
+        padding: 7.5px 60px 7.5px 14px !important;
+      }
+    }
+  }
+}

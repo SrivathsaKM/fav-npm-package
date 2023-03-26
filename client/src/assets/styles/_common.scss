@@ -1,0 +1,61 @@
+@import 'variable';
+
+body {
+  .noResultFound {
+    min-height: 200px;
+    img {
+      margin-bottom: 12px;
+    }
+    .noStateSubHeading {
+      font-size: $font14;
+      font-weight: $regularFont;
+      color: $gray5;
+      line-height: $lineHeight20;
+      span {
+        font-weight: $semiBoldFont;
+      }
+    }
+    p {
+      margin-top: 16px;
+    }
+  }
+  .confirmationDialog {
+    .MuiDialog-paper {
+      width: 400px;
+      border-radius: 0px;
+      position: relative;
+      .MuiDialogTitle-root {
+        position: relative;
+        padding: 0;
+        .backgroundImage {
+          object-fit: cover;
+          height: 100%;
+          width: 100%;
+        }
+        .logo {
+          position: absolute;
+          top: 88px;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+      .dialogBottom {
+        padding: 50px 24px 24px;
+        .headingText {
+          text-align: center;
+        }
+        .subText {
+          text-align: center;
+          margin: 16px 8px;
+        }
+        .btnWrapper {
+          display: flex;
+          justify-content: space-between;
+          & button {
+            width: 160px;
+          }
+        }
+      }
+    }
+  }
+}
