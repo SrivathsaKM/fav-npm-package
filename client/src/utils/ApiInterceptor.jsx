@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-// export const baseUrl = process.env.REACT_APP_BASEURL;
+//export const baseUrl = process.env.REACT_APP_BASEURL;
 
-export const baseUrl = 'http://localhost:3051/api';
+export const baseUrl = 'https://fav-npm-package-g91p.onrender.com/api/';
 
 var axiosInstance = axios.create();
 axiosInstance.defaults.baseURL = baseUrl;
