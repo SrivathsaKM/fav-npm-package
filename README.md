@@ -12,7 +12,7 @@
 
 # Deployment:
 
-> * Client side is deployed on Netlify.[https://lambent-marshmallow-e87cbb.netlify.app/fav-npm-packageso](https://lambent-marshmallow-e87cbb.netlify.app/fav-npm-packages). 
+> * Client side is deployed on Netlify.[https://lambent-marshmallow-e87cbb.netlify.app/fav-npm-packages](https://lambent-marshmallow-e87cbb.netlify.app/fav-npm-packages). 
 > * Server side is deployed on Render. [https://fav-npm-package-g91p.onrender.com/api/list](https://fav-npm-package-g91p.onrender.com/api/list)
 
 # API Details:
