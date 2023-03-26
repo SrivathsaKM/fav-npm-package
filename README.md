@@ -1,4 +1,4 @@
-# Web application that allows users to bookmark/fovourite their favourite npm package
+# Web application that allows users to bookmark their favourite npm package
 
 # Feature:
 
