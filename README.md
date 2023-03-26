@@ -31,4 +31,13 @@ Note:
 > * Client: React, Material UI, React-router-dom, Axios
 > * Server: Express, cors, mongoose, Axios, dotenv
 
+# To Run on your Local:
 
+# Client:
+> * npm install to install node modules
+> * npm run dev to run react application
+> * npm build to build the application
+
+# Server:
+> * npm install to install node modules
+> * npm run dev to run server
