@@ -23,3 +23,7 @@ export const errorCodes = {
     requiredFlag: true,
   },
 };
+
+export const getSelectedNpmPackage = (data, name) => {
+  return data.find((item) => item.package.name === name);
+};

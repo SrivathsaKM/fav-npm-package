@@ -1,14 +1,14 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useMemo, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import styles from '../../assets/styles/favNpmPackage.module.scss';
 import CustomInput from '../../shared_ui_components/CustomInput';
 import CustomButton from '../../shared_ui_components/CustomButton';
 import CustomRadioButton from '../../shared_ui_components/CustomRadioButton';
 import { addFavNpmPackageForm, getSingleFavNpmPackage, searchFavNpmPackage, updateFavNpmPackageForm } from '../apiServices';
-import { errorCodes } from '../../constants';
+import { errorCodes, getSelectedNpmPackage } from '../../constants';
 import { fieldValidation } from '../../utils/FormValidation';
 
-import { Grid, IconButton, TextField, Tooltip } from '@mui/material';
+import { Grid, IconButton, Tooltip } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import NoResult from '../../shared_ui_components/NoResult';
 import Shimmer from '../../shared_ui_components/Shimmer';
@@ -121,7 +121,8 @@ const AddUpdateFavNpmpackageForm = () => {
 
     if (Object.keys(validateNewInput).every((k) => validateNewInput[k] === '')) {
       setLoader(true);
-      const selectedpackageDetail = npmPackageOption.find((item) => item.package.name === formData.selectedPackageName);
+      // const selectedpackageDetail = npmPackageOption.find((item) => item.package.name === formData.selectedPackageName);
+      const selectedpackageDetail = getSelectedNpmPackage(npmPackageOption, formData.selectedPackageName);
       const form_data = {
         packageName: formData.packageName,
         selectedPackageName: formData.selectedPackageName,
@@ -134,8 +135,8 @@ const AddUpdateFavNpmpackageForm = () => {
           publishers: selectedpackageDetail?.package?.publisher,
           maintainers: selectedpackageDetail?.package?.maintainers,
           scoreDetail: {
-            ...selectedpackageDetail?.score.detail,
-            final: selectedpackageDetail?.score.final,
+            ...selectedpackageDetail?.score?.detail,
+            final: selectedpackageDetail?.score?.final,
             searchScore: selectedpackageDetail?.searchScore,
           },
         },
@@ -183,6 +184,15 @@ const AddUpdateFavNpmpackageForm = () => {
     }
   };
 
+  const keyword = useMemo(() => {
+    if (formData.selectedPackageName && npmPackageOption) {
+      const selectedpackageDetail = getSelectedNpmPackage(npmPackageOption, formData.selectedPackageName);
+      return selectedpackageDetail;
+    }
+  }, [formData.selectedPackageName, npmPackageOption]);
+
+  console.log(keyword, 'keyword');
+
   useEffect(() => {
     if (openToastMessage) {
       setTimeout(() => {
@@ -210,7 +220,7 @@ const AddUpdateFavNpmpackageForm = () => {
         <form onSubmit={handleSubmitForm}>
           <Grid container spacing={2}>
             <Grid item md={12}>
-              <CustomInput label='Package Name *' className={styles.inputBlk} placeholder='React js' noMargin='noMargin' value={formData.packageName} onChange={(e) => handleChange('packageName', e.target.value)} error={error.packageName} />
+              <CustomInput label='Package Name (enter keyword) *' className={styles.inputBlk} placeholder='React js' noMargin='noMargin' value={formData.packageName} onChange={(e) => handleChange('packageName', e.target.value)} error={error.packageName} />
             </Grid>
 
             {formData.packageName ? (
@@ -244,12 +254,17 @@ const AddUpdateFavNpmpackageForm = () => {
             ) : null}
 
             <Grid item md={12}>
-              <CustomInput label='Why this is your fav?' className={styles.inputBlk} multiline placeholder='Why this is your fav' noMargin='noMargin' value={formData.description} onChange={(e) => handleChange('description', e.target.value)} error={error.description} />
+              <CustomInput label='Why This Is Your Fav?' className={styles.inputBlk} multiline placeholder='Why this is your fav' noMargin='noMargin' value={formData.description} onChange={(e) => handleChange('description', e.target.value)} error={error.description} />
             </Grid>
+            {keyword?.package?.keywords && (
+              <Grid item md={12}>
+                <CustomInput label='Selected Package Category/Keyword' className={styles.inputBlk} noMargin='noMargin' value={keyword?.package?.keywords?.join(', ') || ''} disabled />
+              </Grid>
+            )}
           </Grid>
 
           <div className={styles.buttonWrapper}>
-            <CustomButton className={`${loader ? ' primaryBtn disabledBtn' : 'primaryBtn'}`} children={`${id ? 'Edit' : 'Add'}`} type='submit' />
+            <CustomButton className={`${loader ? ' primaryBtn disabledBtn' : 'primaryBtn'}`} children={`${id ? 'Update' : 'Add'}`} type='submit' />
             <CustomButton className='outlinedBtn' children='Cancel' type='button' onClick={() => navigate(-1)} />
           </div>
         </form>
